@@ -1,0 +1,25 @@
+/* src/components/QRCodeGenerator/QRCodeGenerator.module.css */
+
+/* Contenedor principal para el generador de QR */
+.qrcodeContainer {
+    background-color: #fff0f5; /* Rosa muy pálido */
+    border: 1px solid #f8bbd0; /* Borde rosa claro */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 350px; /* Limita el ancho para que no se desborde en móvil */
+    width: 90%;       /* Se adapta al 90% en pantallas pequeñas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+
+
+  /* Estilo para la imagen del QR */
+  .qrcode img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  

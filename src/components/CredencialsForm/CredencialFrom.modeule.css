@@ -1,0 +1,76 @@
+/* src/components/CredentialsForm/CredentialsForm.module.css */
+h1 {
+    margin-bottom: 1rem;
+    color: #e91e63; /* Un rosa más vivo para el título */
+    font-size: 1.8rem;
+  }
+/* Contenedor del formulario */
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff0f5; /* Rosa muy pálido */
+    border: 1px solid #f8bbd0; /* Borde rosa claro */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 350px;
+    width: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para las etiquetas de texto (label) */
+  .label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #444;
+    margin: 10px 0 5px 0;
+    text-align: left;
+    width: 80%;
+    font-size: 1rem;
+    color: #444; /* Texto oscuro para mejor contraste */
+    margin: 0.5rem 0 0.2rem 0;
+    width: 100%;
+    text-align: left;
+  }
+  
+  /* Estilos para los campos de entrada (input) */
+  .input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #f8bbd0;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: #fffafd; /* Casi blanco, ligero tono rosa */
+    color: #444; /* Texto oscuro para mejor contraste */
+    background-color: #fffafd; /* Fondo casi blanco con un ligero matiz */
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ffc3d4; /* Rosa muy clarito para el borde */
+    color: #b05185; /* Texto oscuro */
+    box-sizing: border-box;
+  }
+  
+  .submitButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #e91e63; /* Rosa vibrante */
+    color: white;
+    /* Definimos la transición para background-color y transform */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin-top: 5px;
+  }
+  
+  /* Al hacer hover, aplicamos un ligero zoom (scale) y un tono más oscuro */
+  .submitButton:hover {
+    background-color: #d81b60;
+    transform: scale(1.02); /* Zoom muy sutil */
+  }
+  

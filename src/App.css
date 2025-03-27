@@ -1,0 +1,42 @@
+/* Aseguramos que el contenedor raíz ocupe todo el ancho posible con márgenes automáticos */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  justify-content: center;
+  background-color: #fff0f5; /* Fondo pastel muy suave (LavenderBlush) */
+}
+
+/* Reseteamos margenes y paddings del body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #444; /* Texto un poco más oscuro para mejor contraste */
+  background-color: #ffd9e8; /* Fondo pastel rosado */
+}
+
+/* Contenedor principal de la aplicación */
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh; /* Ocupa la mayor parte de la altura de la ventana */
+  padding: 20px;
+}
+
+/* Estilos para el contenedor del formulario */
+.container {
+  background-color: #fff; /* Fondo blanco para resaltar los inputs */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;      /* Limita el ancho para evitar desbordamientos en móvil */
+  width: 90%;            /* Se ajusta al 90% del contenedor en pantallas pequeñas */
+  margin: px auto;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
