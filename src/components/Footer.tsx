@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
 
           <div className="flex items-center gap-5">
             <a
-              href="https://github.com/tu-usuario"
+              href="https://github.com/LuiccianDev"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-800 hover:text-red-600 transition-all duration-300 hover:scale-125 transform drop-shadow-md"
@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
             </a>
 
             <a
-              href="https://linkedin.com/in/tu-usuario"
+              href="https://www.linkedin.com/in/william-guevara-lazaro-79274b2a3"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-800 hover:text-red-600 transition-all duration-300 hover:scale-125 transform drop-shadow-md"
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
             </a>
 
             <a
-              href="https://instagram.com/tu-usuario"
+              href="https://www.instagram.com/luiccian_dev"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-800 hover:text-red-600 transition-all duration-300 hover:scale-125 transform drop-shadow-md"

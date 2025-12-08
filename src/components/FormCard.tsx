@@ -25,7 +25,7 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit, attempts, errorMessage })
         </p>
       </div>
 
-      <div className="bg-red-100 rounded-3xl shadow-2xl px-8 py-10">
+      <div className="bg-red-100/50 backdrop-blur-md  rounded-3xl shadow-2xl px-8 py-10">
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <label htmlFor="password" className="block font-bold mb-3 text-red-700 text-base ">
