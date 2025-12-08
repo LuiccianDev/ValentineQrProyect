@@ -6,7 +6,7 @@ interface FormCardProps {
   errorMessage: string;
 }
 
-const FormCard: React.FC<FormCardProps> = ({ onSubmit, attempts, errorMessage }) => {
+const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
   const [password, setPassword] = useState("");
   const [secretKey, setSecretKey] = useState("");
   const [showPassword, setShowPassword] = useState(false);

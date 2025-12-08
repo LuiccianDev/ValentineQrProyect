@@ -1,66 +1,66 @@
 // src/App.tsx
-import React, { useState } from 'react';
-import SecretPage from './pages/Secretpages.tsx';
-import CredentialsForm from './pages/AuthPage.tsx';
-import { PASSWORD, SECRET_KEY } from './const/constants.ts';
+import React, { useState } from 'react'
+import SecretPage from './pages/Secretpages.tsx'
+import CredentialsForm from './pages/AuthPage.tsx'
+import { PASSWORD, SECRET_KEY } from './const/constants.ts'
 
 const App: React.FC = () => {
-  const [password, setPassword] = useState('');
-  const [secretKey, setSecretKey] = useState('');
-  const [accessGranted, setAccessGranted] = useState(false);
-  const [showQR, setShowQR] = useState(false);
-  const [attempts, setAttempts] = useState(0);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [password, setPassword] = useState('')
+  const [secretKey, setSecretKey] = useState('')
+  const [accessGranted, setAccessGranted] = useState(false)
+  const [showQR, setShowQR] = useState(false)
+  const [attempts, setAttempts] = useState(0)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const getHintMessage = (attemptNumber: number): string => {
     const hints = [
       'Pista: Piensa en algo especial entre nosotros... ',
       'Pista: Recuerda la clave secreta... ',
-      'Último intento fallido. Aquí está tu código QR de todas formas... '
-    ];
-    return hints[attemptNumber - 1] || hints[2];
-  };
+      'Último intento fallido. Aquí está tu código QR de todas formas... ',
+    ]
+    return hints[attemptNumber - 1] || hints[2]
+  }
 
   const handleFormSubmit = (pwd: string, key: string) => {
-    setPassword(pwd);
-    setSecretKey(key);
+    setPassword(pwd)
+    setSecretKey(key)
 
     if (pwd === PASSWORD && key === SECRET_KEY) {
-      setAccessGranted(true);
-      setAttempts(0);
-      setErrorMessage('');
+      setAccessGranted(true)
+      setAttempts(0)
+      setErrorMessage('')
     } else {
-      setAccessGranted(false);
-      const newAttempts = attempts + 1;
-      setAttempts(newAttempts);
-      setErrorMessage(getHintMessage(newAttempts));
+      setAccessGranted(false)
+      const newAttempts = attempts + 1
+      setAttempts(newAttempts)
+      setErrorMessage(getHintMessage(newAttempts))
 
       if (newAttempts >= 3) {
-        setShowQR(true);
+        setShowQR(true)
       }
     }
-  };
+  }
 
   const handleCloseQR = () => {
-    setShowQR(false);
-    setPassword('');
-    setSecretKey('');
-    setAttempts(0);
-    setErrorMessage('');
-  };
+    setShowQR(false)
+    setPassword('')
+    setSecretKey('')
+    setAttempts(0)
+    setErrorMessage('')
+  }
 
   const handleCloseAlert = () => {
-    setErrorMessage('');
-  };
+    setErrorMessage('')
+  }
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex min-h-screen items-center justify-center">
       {accessGranted ? (
         <SecretPage />
       ) : (
-        <CredentialsForm 
-          onSubmit={handleFormSubmit} 
-          password={password} 
+        <CredentialsForm
+          onSubmit={handleFormSubmit}
+          password={password}
           secretKey={secretKey}
           showQR={showQR}
           onCloseQR={handleCloseQR}
@@ -70,7 +70,7 @@ const App: React.FC = () => {
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

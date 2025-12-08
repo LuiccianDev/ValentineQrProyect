@@ -1,43 +1,43 @@
-import React from "react";
-import FormCard from "../components/FormCard";
-import BackgroundEffects from "../components/BackgroundEffects";
-import QRCodeGenerator from "../components/QrCodegenrator";
-import Alert from "../components/Alert";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import React from 'react'
+import FormCard from '../components/FormCard'
+import BackgroundEffects from '../components/BackgroundEffects'
+import QRCodeGenerator from '../components/QrCodegenrator'
+import Alert from '../components/Alert'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 interface CredentialsFormProps {
-  onSubmit: (password: string, secretKey: string) => void;
-  password: string;
-  secretKey: string;
-  showQR: boolean;
-  onCloseQR: () => void;
-  attempts: number;
-  errorMessage: string;
-  onCloseAlert: () => void;
+  onSubmit: (password: string, secretKey: string) => void
+  password: string
+  secretKey: string
+  showQR: boolean
+  onCloseQR: () => void
+  attempts: number
+  errorMessage: string
+  onCloseAlert: () => void
 }
 
-const CredentialsForm: React.FC<CredentialsFormProps> = ({ 
-  onSubmit, 
-  password, 
-  secretKey, 
-  showQR, 
-  onCloseQR, 
-  attempts, 
+const CredentialsForm: React.FC<CredentialsFormProps> = ({
+  onSubmit,
+  password,
+  secretKey,
+  showQR,
+  onCloseQR,
+  attempts,
   errorMessage,
-  onCloseAlert
+  onCloseAlert,
 }) => {
   return (
     <>
       <Header />
-      <div className="fixed inset-0 w-full h-full bg-red-200 flex items-center justify-center p-4 overflow-hidden">
+      <div className="fixed inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-red-200 p-4">
         <BackgroundEffects />
         <div className="relative z-10">
           <FormCard onSubmit={onSubmit} attempts={attempts} errorMessage={errorMessage} />
         </div>
-        <Alert 
-          message={errorMessage} 
-          show={!!errorMessage && attempts < 3} 
+        <Alert
+          message={errorMessage}
+          show={!!errorMessage && attempts < 3}
           onClose={onCloseAlert}
           duration={5000}
         />
@@ -45,24 +45,24 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
       </div>
 
       {showQR && password && secretKey && (
-        <div 
-          className="fixed inset-0 w-full h-full backdrop-blur-lg flex items-center justify-center z-50 animate-fadeIn"
+        <div
+          className="animate-fadeIn fixed inset-0 z-50 flex h-full w-full items-center justify-center backdrop-blur-lg"
           style={{ backgroundColor: 'rgba(231, 74, 74, 0.33)' }}
           onClick={onCloseQR}
         >
-          <div 
-            className="relative bg-white rounded-xl shadow-2xl p-10 max-w-md w-full animate-scaleIn"
+          <div
+            className="animate-scaleIn relative w-full max-w-md rounded-xl bg-white p-10 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <QRCodeGenerator password={password} secretKey={secretKey} />
-            <p className="text-center mt-6 text-red-600 font-semibold text-base">
+            <p className="mt-6 text-center text-base font-semibold text-red-600">
               Último intento fallido. Aquí está tu código QR de todas formas...
             </p>
           </div>
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default CredentialsForm;
+export default CredentialsForm

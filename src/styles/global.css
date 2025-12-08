@@ -1,22 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 @font-face {
-    font-family: 'Julius';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/fonts/JuliusSansOne.woff2') format('woff2'); 
+  font-family: 'Julius';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/JuliusSansOne.woff2') format('woff2');
 }
-
 
 @theme {
-    --color-primary: #ec4899;
-    --color-primary-dark: #db2777;
-    --color-secondary: #f472b6;
-    --color-accent: #f9a8d4;
-    --font-julius: 'Julius', sans-serif;
+  --color-primary: #ec4899;
+  --color-primary-dark: #db2777;
+  --color-secondary: #f472b6;
+  --color-accent: #f9a8d4;
+  --font-julius: 'Julius', sans-serif;
 }
-
-
 
 /* Base styles */
 @layer base {
@@ -30,25 +27,25 @@
     @apply bg-white text-gray-900;
     overflow: hidden;
   }
-  
+
   /* Ocultar scrollbar en todos los navegadores */
   * {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE y Edge */
   }
-  
+
   *::-webkit-scrollbar {
     display: none; /* Chrome, Safari y Opera */
   }
 
   h1 {
-    @apply text-3xl font-bold text-center mb-6 text-pink-500;
+    @apply mb-6 text-center text-3xl font-bold text-pink-500;
   }
   .input {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500;
+    @apply w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-pink-500 focus:outline-none;
   }
   .label {
-    @apply block text-gray-700 text-sm font-bold mb-2;
+    @apply mb-2 block text-sm font-bold text-gray-700;
   }
 }
 
@@ -82,13 +79,21 @@
 }
 
 @keyframes shake {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
-  10%, 30%, 50%, 70%, 90% {
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
     transform: translateX(-5px);
   }
-  20%, 40%, 60%, 80% {
+  20%,
+  40%,
+  60%,
+  80% {
     transform: translateX(5px);
   }
 }
