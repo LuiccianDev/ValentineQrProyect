@@ -5,32 +5,21 @@ const SecretPage: React.FC = () => {
   const [noCount, setNoCount] = useState(0)
   const [yesPressed, setYesPressed] = useState(false)
   const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 })
-  const [animationType, setAnimationType] = useState('')
   const yesButtonScale = 1 + noCount * 1.5
 
   const handleNoClick = () => {
     setNoCount(noCount + 1)
-    moveButtonRandomly()
+    // Primero incrementamos el contador, luego movemos el botón
+    setTimeout(() => {
+      moveButtonRandomly()
+    }, 50)
   }
 
   const moveButtonRandomly = () => {
-    const animations = [
-      'animate-bounce',
-      'animate-wiggle',
-      'animate-slide-left',
-      'animate-slide-right',
-      'animate-spin-move',
-      'animate-elastic',
-    ]
+    const randomX = Math.random() * 300 - 150
+    const randomY = Math.random() * 300 - 150
     
-    const randomAnimation = animations[Math.floor(Math.random() * animations.length)]
-    const randomX = Math.random() * 200 - 100
-    const randomY = Math.random() * 200 - 100
-    
-    setAnimationType(randomAnimation)
     setNoButtonPosition({ x: randomX, y: randomY })
-    
-    setTimeout(() => setAnimationType(''), 600)
   }
 
   const getNoButtonText = () => {
@@ -53,11 +42,11 @@ const SecretPage: React.FC = () => {
       'No :(',
     ]
 
-    return phrases[Math.min(noCount, phrases.length - 1)]
+    return phrases[noCount % phrases.length]
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
+    <div className="flex h-screen flex-col items-center justify-center ">
       {yesPressed ? (
         <>
           <img
@@ -83,19 +72,19 @@ const SecretPage: React.FC = () => {
           )}
           <div className="relative flex items-center">
             <button
-              className="mr-4 rounded bg-primary px-4 py-2 font-bold text-white transition-all duration-300 hover:bg-primary-dark"
+              className="mr-4 rounded bg-pink-500 px-4 py-2 font-bold text-white transition-all duration-300 hover:bg-pink-600"
               style={{ transform: `scale(${yesButtonScale})`, zIndex: 1 }}
               onClick={() => setYesPressed(true)}
             >
-              Yes
+              YES
             </button>
             <button
               onClick={handleNoClick}
-              className={`relative rounded bg-red-500 px-4 py-2 font-bold text-white transition-all duration-300 hover:bg-red-700 ${animationType}`}
+              className="relative rounded bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-700"
               style={{ 
                 zIndex: 10,
                 transform: `translate(${noButtonPosition.x}px, ${noButtonPosition.y}px)`,
-                transition: 'transform 0.5s ease-out'
+                transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
               }}
             >
               {getNoButtonText()}
