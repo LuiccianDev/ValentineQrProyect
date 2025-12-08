@@ -18,7 +18,7 @@ const SecretPage: React.FC = () => {
   const moveButtonRandomly = () => {
     const randomX = Math.random() * 300 - 150
     const randomY = Math.random() * 300 - 150
-    
+
     setNoButtonPosition({ x: randomX, y: randomY })
   }
 
@@ -46,7 +46,7 @@ const SecretPage: React.FC = () => {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center ">
+    <div className="flex h-screen flex-col items-center justify-center">
       {yesPressed ? (
         <>
           <img
@@ -81,10 +81,10 @@ const SecretPage: React.FC = () => {
             <button
               onClick={handleNoClick}
               className="relative rounded bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-700"
-              style={{ 
+              style={{
                 zIndex: 10,
                 transform: `translate(${noButtonPosition.x}px, ${noButtonPosition.y}px)`,
-                transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
               }}
             >
               {getNoButtonText()}

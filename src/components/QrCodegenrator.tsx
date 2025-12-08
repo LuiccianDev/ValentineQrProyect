@@ -47,15 +47,6 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ password, secretKey }
 
         // detectar "píxeles negros" del QR
         if (r < 50 && g < 50 && b < 50) {
-          const x = (i / 4) % 500
-          const y = Math.floor(i / 4 / 500)
-
-          // ❌ grad eliminado (no se usa)
-          // const grad = ctx.createLinearGradient(0, 0, 500, 500)
-
-          // ❌ pixel eliminado (no se usa)
-          // const pixel = ctx.getImageData(x, y, 1, 1)
-
           // marcar píxel como opaco
           data[i] = 255
         }
@@ -89,4 +80,3 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ password, secretKey }
 }
 
 export default QRCodeGenerator
-

@@ -1,6 +1,5 @@
 import React from 'react'
 import FormCard from '../components/FormCard'
-import BackgroundEffects from '../components/BackgroundEffects'
 import QRCodeGenerator from '../components/QrCodegenrator'
 import Alert from '../components/Alert'
 import Footer from '../components/Footer'
@@ -31,7 +30,6 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
     <>
       <Header />
       <div className="fixed inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-red-100 p-4">
-        <BackgroundEffects />
         <div className="relative z-10">
           <FormCard onSubmit={onSubmit} attempts={attempts} errorMessage={errorMessage} />
         </div>
