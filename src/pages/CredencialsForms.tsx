@@ -1,7 +1,7 @@
 import React from "react";
 import FormCard from "../components/FormCard";
 import BackgroundEffects from "../components/BackgroundEffects";
-import QRCodeGenerator from "../utils/QrCodegenrator";
+import QRCodeGenerator from "../components/QrCodegenrator";
 
 interface CredentialsFormProps {
   onSubmit: (password: string, fecha: string) => void;
