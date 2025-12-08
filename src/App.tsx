@@ -14,9 +14,9 @@ const App: React.FC = () => {
 
   const getHintMessage = (attemptNumber: number): string => {
     const hints = [
-      '❌ Intento 1/3 fallido. Pista: Piensa en algo especial entre nosotros... 💭',
-      '❌ Intento 2/3 fallido. Pista: Recuerda la clave secreta... 🔑',
-      '❌ Último intento fallido. Aquí está tu código QR de todas formas... 💔'
+      'Pista: Piensa en algo especial entre nosotros... ',
+      'Pista: Recuerda la clave secreta... ',
+      'Último intento fallido. Aquí está tu código QR de todas formas... '
     ];
     return hints[attemptNumber - 1] || hints[2];
   };
