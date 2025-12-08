@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 py-2">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
-            <p className="text-sm font-bold text-gray-900 drop-shadow-sm">
+            <p className="text-sm font-bold text-pink-700 drop-shadow-sm">
               Creado con <span className="text-red-500 animate-pulse">❤️</span> por <span className="text-red-600 font-extrabold">LuiccianDev</span>
             </p>
           </div>
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
               href="https://github.com/LuiccianDev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-800 hover:text-red-600 transition-all duration-300 hover:scale-125 transform drop-shadow-md"
+              className="text-pink-700 hover:text-red-600 transition-all duration-300 hover:scale-125 transform drop-shadow-md"
               aria-label="GitHub"
             >
               <svg className="size-5" fill="currentColor" viewBox="0 0 24 24">
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
               href="https://www.linkedin.com/in/william-guevara-lazaro-79274b2a3"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-800 hover:text-red-600 transition-all duration-300 hover:scale-125 transform drop-shadow-md"
+              className="text-pink-700 hover:text-red-600 transition-all duration-300 hover:scale-125 transform drop-shadow-md"
               aria-label="LinkedIn"
             >
               <svg className="size-5" fill="currentColor" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
               href="https://www.instagram.com/luiccian_dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-800 hover:text-red-600 transition-all duration-300 hover:scale-125 transform drop-shadow-md"
+              className="text-pink-700 hover:text-red-600 transition-all duration-300 hover:scale-125 transform drop-shadow-md"
               aria-label="Instagram"
             >
               <svg className="size-5" fill="currentColor" viewBox="0 0 24 24">

@@ -55,6 +55,9 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
             onClick={(e) => e.stopPropagation()}
           >
             <QRCodeGenerator password={password} secretKey={secretKey} />
+            <p className="text-center mt-6 text-red-600 font-semibold text-base">
+              Último intento fallido. Aquí está tu código QR de todas formas...
+            </p>
           </div>
         </div>
       )}
