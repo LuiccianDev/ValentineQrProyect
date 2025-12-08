@@ -4,6 +4,7 @@ import BackgroundEffects from "../components/BackgroundEffects";
 import QRCodeGenerator from "../components/QrCodegenrator";
 import Alert from "../components/Alert";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 interface CredentialsFormProps {
   onSubmit: (password: string, secretKey: string) => void;
@@ -28,6 +29,7 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
 }) => {
   return (
     <>
+      <Header />
       <div className="fixed inset-0 w-full h-full bg-red-200 flex items-center justify-center p-4 overflow-hidden">
         <BackgroundEffects />
         <div className="relative z-10">
