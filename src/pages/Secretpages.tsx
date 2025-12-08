@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 const SecretPage: React.FC = () => {
   const [noCount, setNoCount] = useState(0)
   const [yesPressed, setYesPressed] = useState(false)
-  const yesButtonSize = noCount * 20 + 16
+  const yesButtonScale = 1 + noCount * 0.2
 
   const handleNoClick = () => {
     setNoCount(noCount + 1)
@@ -54,17 +54,18 @@ const SecretPage: React.FC = () => {
             alt="love-bear"
           />
           <h1 className="mb-4 text-4xl font-bold text-pink-500">Will you be my Valentine?</h1>
-          <div className="flex items-center">
+          <div className="relative flex items-center">
             <button
               className="mr-4 rounded bg-primary px-4 py-2 font-bold text-white transition-all duration-300 hover:bg-primary-dark"
-              style={{ fontSize: `${yesButtonSize}px` }}
+              style={{ transform: `scale(${yesButtonScale})`, zIndex: 1 }}
               onClick={() => setYesPressed(true)}
             >
               Yes
             </button>
             <button
               onClick={handleNoClick}
-              className="rounded bg-red-500 px-4 py-2 font-bold text-white transition-all duration-300 hover:bg-red-700"
+              className="relative rounded bg-red-500 px-4 py-2 font-bold text-white transition-all duration-300 hover:bg-red-700"
+              style={{ zIndex: 10 }}
             >
               {getNoButtonText()}
             </button>

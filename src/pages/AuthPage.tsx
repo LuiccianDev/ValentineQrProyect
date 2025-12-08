@@ -30,7 +30,7 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
   return (
     <>
       <Header />
-      <div className="fixed inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-red-200 p-4">
+      <div className="fixed inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-red-100 p-4">
         <BackgroundEffects />
         <div className="relative z-10">
           <FormCard onSubmit={onSubmit} attempts={attempts} errorMessage={errorMessage} />

@@ -24,7 +24,7 @@
     overflow: hidden;
   }
   body {
-    @apply bg-white text-gray-900;
+    @apply bg-pink-200/10 text-gray-900;
     overflow: hidden;
   }
 

@@ -20,7 +20,7 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
     <div className="w-full max-w-lg relative z-10 flex flex-col justify-center min-h-[70vh]  ">
       <div className="text-center mb-8">
         <h1 className="text-7xl font-bold text-red-600 mb-3">Valentine QR</h1>
-        <p className="text-gray-700 text-lg">
+        <p className="text-gray-700 text-sm font-bold">
           Crea un QR especial para tu propuesta de San Valentín.
         </p>
       </div>
