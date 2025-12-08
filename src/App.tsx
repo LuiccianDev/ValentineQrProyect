@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import SecretPage from './pages/Secretpages.tsx';
 import CredentialsForm from './pages/AuthPage.tsx';
-import { PASSWORD, FECHA_CORRECTA } from './const/constants.ts';
+import { PASSWORD, SECRET_KEY } from './const/constants.ts';
 
 const App: React.FC = () => {
   const [password, setPassword] = useState('');
-  const [fecha, setFecha] = useState('');
+  const [secretKey, setSecretKey] = useState('');
   const [accessGranted, setAccessGranted] = useState(false);
   const [showQR, setShowQR] = useState(false);
   const [attempts, setAttempts] = useState(0);
@@ -15,17 +15,17 @@ const App: React.FC = () => {
   const getHintMessage = (attemptNumber: number): string => {
     const hints = [
       '❌ Intento 1/3 fallido. Pista: Piensa en algo especial entre nosotros... 💭',
-      '❌ Intento 2/3 fallido. Pista: Recuerda nuestra fecha más importante... 📅',
+      '❌ Intento 2/3 fallido. Pista: Recuerda la clave secreta... 🔑',
       '❌ Último intento fallido. Aquí está tu código QR de todas formas... 💔'
     ];
     return hints[attemptNumber - 1] || hints[2];
   };
 
-  const handleFormSubmit = (pwd: string, date: string) => {
+  const handleFormSubmit = (pwd: string, key: string) => {
     setPassword(pwd);
-    setFecha(date);
+    setSecretKey(key);
 
-    if (pwd === PASSWORD && date === FECHA_CORRECTA) {
+    if (pwd === PASSWORD && key === SECRET_KEY) {
       setAccessGranted(true);
       setAttempts(0);
       setErrorMessage('');
@@ -44,8 +44,12 @@ const App: React.FC = () => {
   const handleCloseQR = () => {
     setShowQR(false);
     setPassword('');
-    setFecha('');
+    setSecretKey('');
     setAttempts(0);
+    setErrorMessage('');
+  };
+
+  const handleCloseAlert = () => {
     setErrorMessage('');
   };
 
@@ -57,11 +61,12 @@ const App: React.FC = () => {
         <CredentialsForm 
           onSubmit={handleFormSubmit} 
           password={password} 
-          fecha={fecha}
+          secretKey={secretKey}
           showQR={showQR}
           onCloseQR={handleCloseQR}
           attempts={attempts}
           errorMessage={errorMessage}
+          onCloseAlert={handleCloseAlert}
         />
       )}
     </div>

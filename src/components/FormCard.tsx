@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 
 interface FormCardProps {
-  onSubmit: (password: string, fecha: string) => void;
+  onSubmit: (password: string, secretKey: string) => void;
   attempts: number;
   errorMessage: string;
 }
 
 const FormCard: React.FC<FormCardProps> = ({ onSubmit, attempts, errorMessage }) => {
   const [password, setPassword] = useState("");
-  const [fecha, setFecha] = useState("");
+  const [secretKey, setSecretKey] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit(password.trim(), fecha);
+    onSubmit(password.trim(), secretKey);
   };
 
   return (
     <div className="w-full max-w-lg relative z-10 flex flex-col justify-center min-h-[70vh]  ">
       <div className="text-center mb-8">
-        <h1 className="text-7xl font-bold text-red-600 mb-3">GENERAR QR</h1>
+        <h1 className="text-7xl font-bold text-red-600 mb-3">Valentine QR</h1>
         <p className="text-gray-700 text-lg">
           Crea un QR especial para tu propuesta de San Valentín.
         </p>
@@ -63,50 +63,51 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit, attempts, errorMessage })
             </div>
           </div>
 
-          <div className="flex justify-center my-6 items-center text-red-700">
-            <span className="h-px bg-red-200 flex-grow"></span>
+          <div className="flex justify-center my-6 items-center text-red-800">
+            <span className="h-px bg-red-600 flex-grow"></span>
             <svg className="h-6 w-12 mx-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 46 20">
               <path d="M45 10H1" strokeLinecap="round" strokeLinejoin="round"></path>
               <path d="M37 2l8 8-8 8" strokeLinecap="round" strokeLinejoin="round"></path>
               <path d="M23 18.572c-2.484-2.09-8-6.572-8-10.572C15 4.522 17.522 2 20.5 2c1.838 0 3.486.972 4.5 2.5.215-.29.45-.566.702-.82.12-.12.245-.236.375-.348C26.56 2.92 27.52 2 28.5 2 31.478 2 34 4.522 34 8c0 4-5.516 8.482-8 10.572L23 18.572z" fill="#D1355A" stroke="none" strokeLinecap="round" strokeLinejoin="round"></path>
             </svg>
-            <span className="h-px bg-red-200 flex-grow"></span>
+            <span className="h-px bg-red-600 flex-grow"></span>
           </div>
 
           <div className="mb-6">
-            <label htmlFor="fecha" className="block font-bold mb-3 text-red-700 text-base">
-              Fecha Especial
+            <label htmlFor="secretKey" className="block font-bold mb-3 text-red-700 text-base">
+              Clave Secreta
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-red-700 pointer-events-none">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                  <path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
                 </svg>
               </span>
               <input
-                id="fecha"
-                type="date"
-                value={fecha}
-                onChange={(e) => setFecha(e.target.value)}
+                id="secretKey"
+                type="text"
+                value={secretKey}
+                onChange={(e) => setSecretKey(e.target.value)}
+                placeholder="Escribe la clave secreta"
                 required
-                className="w-full pl-12 pr-4 py-3 border-2 border-red-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-800 text-sm bg-red-50 shadow-sm [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full"
+                className="w-full pl-12 pr-4 py-3 border-2 border-red-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-800 placeholder-gray-500 text-sm bg-red-50 shadow-sm"
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-red-600 text-white font-bold text-base py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-red-600 to-red-600 text-white font-bold text-base py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="relative z-10">
               <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h-2v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/>
             </svg>
-            Generar Código QR
+            <span className="relative z-10">Generar Código QR</span>
           </button>
         </form>
       </div>
 
-      <p className="text-center text-gray-950 text-base mt-5 font-bold">
+      <p className="text-center text-gray-800 text-base mt-5 font-bold">
         Este código QR desbloqueará tu propuesta romántica.
       </p>
       <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-rose-200 rounded-full blur-3xl opacity-40 pointer-events-none"></div>

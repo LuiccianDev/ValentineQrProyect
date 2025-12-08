@@ -4,17 +4,17 @@ import { MENSAJE, USERNAME } from "../const/constants.ts";
 
 interface QRCodeGeneratorProps {
   password: string;
-  fecha: string;
+  secretKey: string;
 }
 
-const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ password, fecha }) => {
+const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ password, secretKey }) => {
   const [qrUrl, setQrUrl] = useState<string>("");
 
   useEffect(() => {
     let isMounted = true;
 
     const generarQRCode = async () => {
-      if (!password || !fecha) return;
+      if (!password || !secretKey) return;
 
       const enlace = `https://instagram.com/${encodeURIComponent(USERNAME)}`;
       const contenidoQR = `${MENSAJE} | Enlace : ${enlace}`;
@@ -73,7 +73,7 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ password, fecha }) =>
     return () => {
       isMounted = false;
     };
-  }, [password, fecha]);
+  }, [password, secretKey]);
 
   if (!qrUrl) return null;
 
