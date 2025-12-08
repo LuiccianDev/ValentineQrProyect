@@ -64,13 +64,13 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit, attempts, errorMessage })
           </div>
 
           <div className="flex justify-center my-6 items-center text-red-800">
-            <span className="h-px bg-red-600 flex-grow"></span>
+            <span className="h-px bg-red-600 grow"></span>
             <svg className="h-6 w-12 mx-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 46 20">
               <path d="M45 10H1" strokeLinecap="round" strokeLinejoin="round"></path>
               <path d="M37 2l8 8-8 8" strokeLinecap="round" strokeLinejoin="round"></path>
               <path d="M23 18.572c-2.484-2.09-8-6.572-8-10.572C15 4.522 17.522 2 20.5 2c1.838 0 3.486.972 4.5 2.5.215-.29.45-.566.702-.82.12-.12.245-.236.375-.348C26.56 2.92 27.52 2 28.5 2 31.478 2 34 4.522 34 8c0 4-5.516 8.482-8 10.572L23 18.572z" fill="#D1355A" stroke="none" strokeLinecap="round" strokeLinejoin="round"></path>
             </svg>
-            <span className="h-px bg-red-600 flex-grow"></span>
+            <span className="h-px bg-red-600 grow"></span>
           </div>
 
           <div className="mb-6">
@@ -97,7 +97,7 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit, attempts, errorMessage })
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-red-600 to-red-600 text-white font-bold text-base py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden"
+            className="w-full bg-linear-to-r from-red-600 to-red-600 text-white font-bold text-base py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="relative z-10">
               <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h-2v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/>

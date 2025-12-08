@@ -45,12 +45,12 @@ const Alert: React.FC<AlertProps> = ({ message, show, onClose, duration = 5000 }
           <img 
             src="/brokeHeart.png" 
             alt="Corazón roto" 
-            className="w-8 h-8 flex-shrink-0 mt-0.5"
+            className="w-8 h-8 shrink-0 mt-0.5"
           />
           <p className="text-red-700 font-semibold text-sm flex-1">{message}</p>
           <button
             onClick={handleClose}
-            className="text-gray-500 hover:text-red-600 transition-colors duration-200 flex-shrink-0"
+            className="text-gray-500 hover:text-red-600 transition-colors duration-200 shrink-0"
             aria-label="Cerrar"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
