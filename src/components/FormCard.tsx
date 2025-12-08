@@ -2,9 +2,11 @@ import React, { useState } from "react";
 
 interface FormCardProps {
   onSubmit: (password: string, fecha: string) => void;
+  attempts: number;
+  errorMessage: string;
 }
 
-const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
+const FormCard: React.FC<FormCardProps> = ({ onSubmit, attempts, errorMessage }) => {
   const [password, setPassword] = useState("");
   const [fecha, setFecha] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -15,18 +17,18 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className="w-full max-w-7xl relative z-10">
+    <div className="w-full max-w-lg relative z-10 flex flex-col justify-center min-h-[70vh]  ">
       <div className="text-center mb-8">
-        <h1 className="text-6xl font-bold text-red-600 mb-3">GENERAR QR</h1>
-        <p className="text-gray-700 text-xl">
+        <h1 className="text-7xl font-bold text-red-600 mb-3">GENERAR QR</h1>
+        <p className="text-gray-700 text-lg">
           Crea un QR especial para tu propuesta de San Valentín.
         </p>
       </div>
 
-      <div className="bg-white rounded-3xl shadow-2xl px-8 py-15 ">
-        <form onSubmit={handleSubmit} >
-          <div className="mb-8 ">
-            <label htmlFor="password" className="block font-bold mb-2 text-red-700 text-base">
+      <div className="bg-red-100 rounded-3xl shadow-2xl px-8 py-10">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-6">
+            <label htmlFor="password" className="block font-bold mb-3 text-red-700 text-base ">
               Contraseña
             </label>
             <div className="relative">
@@ -42,7 +44,7 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Introduce una contraseña segura."
                 required
-                className="w-full pl-12 pr-12 py-4 border-2 border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 text-gray-700 placeholder-gray-400 text-sm"
+                className="w-full pl-12 pr-12 py-3 border-2 border-red-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-800 placeholder-gray-500 text-sm bg-red-50 shadow-sm"
               />
               <button
                 type="button"
@@ -61,7 +63,7 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
             </div>
           </div>
 
-          <div className="flex justify-center my-4 items-center text-red-700">
+          <div className="flex justify-center my-6 items-center text-red-700">
             <span className="h-px bg-red-200 flex-grow"></span>
             <svg className="h-6 w-12 mx-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 46 20">
               <path d="M45 10H1" strokeLinecap="round" strokeLinejoin="round"></path>
@@ -72,7 +74,7 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="fecha" className="block font-bold mb-2 text-red-700 text-base">
+            <label htmlFor="fecha" className="block font-bold mb-3 text-red-700 text-base">
               Fecha Especial
             </label>
             <div className="relative">
@@ -87,14 +89,14 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
                 value={fecha}
                 onChange={(e) => setFecha(e.target.value)}
                 required
-                className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 text-gray-700 text-sm [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full"
+                className="w-full pl-12 pr-4 py-3 border-2 border-red-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-800 text-sm bg-red-50 shadow-sm [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full"
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className=" w-full bg-gradient-to-bl bg-gradient-to-r from-red-600 via-red-500 to-red-600  text-white font-bold text-base py-4 px-6 rounded-2xl  shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full bg-red-600 text-white font-bold text-base py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h-2v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/>
@@ -104,7 +106,7 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
         </form>
       </div>
 
-      <p className="text-center text-gray-950 text-sm mt-4 font-bold">
+      <p className="text-center text-gray-950 text-base mt-5 font-bold">
         Este código QR desbloqueará tu propuesta romántica.
       </p>
       <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-rose-200 rounded-full blur-3xl opacity-40 pointer-events-none"></div>

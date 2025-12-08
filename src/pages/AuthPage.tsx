@@ -2,6 +2,8 @@ import React from "react";
 import FormCard from "../components/FormCard";
 import BackgroundEffects from "../components/BackgroundEffects";
 import QRCodeGenerator from "../components/QrCodegenrator";
+import Alert from "../components/Alert";
+import Footer from "../components/Footer";
 
 interface CredentialsFormProps {
   onSubmit: (password: string, fecha: string) => void;
@@ -9,16 +11,28 @@ interface CredentialsFormProps {
   fecha: string;
   showQR: boolean;
   onCloseQR: () => void;
+  attempts: number;
+  errorMessage: string;
 }
 
-const CredentialsForm: React.FC<CredentialsFormProps> = ({ onSubmit, password, fecha, showQR, onCloseQR }) => {
+const CredentialsForm: React.FC<CredentialsFormProps> = ({ 
+  onSubmit, 
+  password, 
+  fecha, 
+  showQR, 
+  onCloseQR, 
+  attempts, 
+  errorMessage 
+}) => {
   return (
     <>
       <div className="fixed inset-0 w-full h-full bg-red-200 flex items-center justify-center p-4 overflow-hidden">
         <BackgroundEffects />
         <div className="relative z-10">
-          <FormCard onSubmit={onSubmit} />
+          <FormCard onSubmit={onSubmit} attempts={attempts} errorMessage={errorMessage} />
         </div>
+        <Alert message={errorMessage} show={!!errorMessage && attempts < 3} />
+        <Footer />
       </div>
 
       {showQR && password && fecha && (
