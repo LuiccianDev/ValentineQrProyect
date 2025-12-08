@@ -1,69 +1,68 @@
-# React + TypeScript + Vite
+<div align="center">
+  <h1>Valentine QR Project</h1>
+  <p>
+    <em>Genera códigos QR personalizados con degradado para compartir tu perfil de Instagram y un mensaje especial</em>
+  </p>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-18+-blue.svg" alt="React" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5+-blue.svg" alt="TypeScript" /></a>
+  <a href="https://www.npmjs.com/package/qrcode"><img src="https://img.shields.io/badge/qrcode-npm-orange.svg" alt="qrcode" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License" /></a>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Genera un código QR personalizado con degradado para compartir tu perfil de Instagram y un mensaje especial. El QR se genera dinámicamente usando React y la librería [`qrcode`](https://www.npmjs.com/package/qrcode), y se muestra con un efecto visual atractivo.
 
-Currently, two official plugins are available:
+## Vista previa
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Vista previa del proyecto](/public/photoReadme.webp)
 
-## Expanding the ESLint configuration
+## Características
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Generación de QR con degradado personalizado.
+- Mensaje y enlace a Instagram embebidos en el QR.
+- Interfaz sencilla y responsiva.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tecnologías
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [qrcode](https://www.npmjs.com/package/qrcode)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Uso
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/tuusuario/ValentineQrProyect.git
+   ```
+
+2. Instala las dependencias:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Inicia el proyecto:
+
+   ```bash
+   pnpm start
+   ```
+
+4. Ingresa tu contraseña y clave secreta para generar el QR.
+
+## Personalización
+
+Puedes modificar el mensaje y el usuario de Instagram en el archivo:
+
+```bash
+src/const/constants.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+¡Disfruta compartiendo tu QR personalizado!
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Creado por [LuiccianDev](https://github.com/LuiccianDev) .
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más información.
