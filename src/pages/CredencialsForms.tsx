@@ -1,70 +1,41 @@
-// src/components/CredentialsForm/CredentialsForm.tsx
-import React, { useState } from "react";
+import React from "react";
+import FormCard from "../components/FormCard";
+import BackgroundEffects from "../components/BackgroundEffects";
+import QRCodeGenerator from "../utils/QrCodegenrator";
 
 interface CredentialsFormProps {
-  onSubmit: (password: string, 
-            fecha: string) => void;
+  onSubmit: (password: string, fecha: string) => void;
+  password: string;
+  fecha: string;
+  showQR: boolean;
+  onCloseQR: () => void;
 }
 
-const CredentialsForm: React.FC<CredentialsFormProps> = ({ onSubmit }) => {
-  const [password, setPassword] = useState("");
-  const [fecha, setFecha] = useState("");
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    onSubmit(password.trim(), fecha);
-  };
-
+const CredentialsForm: React.FC<CredentialsFormProps> = ({ onSubmit, password, fecha, showQR, onCloseQR }) => {
   return (
-    <div className="w-full max-w-xs mx-auto">
-      <h1 >QR Valentín</h1>
-
-      <form
-        onSubmit={handleSubmit}
-        className="shadow-md rounded px-8 pt-6 pb-8 mb-4"
-      >
-        {/* Campo: Password */}
-        <div className="mb-4">
-          <label htmlFor="password" className="label">
-            Contraseña:
-          </label>
-          <input
-            id="password"
-            type="text"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="xxxxxxx"
-            required
-            className="input"
-          />
+    <>
+      <div className="fixed inset-0 w-full h-full bg-red-200 flex items-center justify-center p-4 overflow-hidden">
+        <BackgroundEffects />
+        <div className="relative z-10">
+          <FormCard onSubmit={onSubmit} />
         </div>
+      </div>
 
-        {/* Campo: Fecha */}
-        <div className="mb-6">
-          <label htmlFor="fecha" className="label">
-            Fecha:
-          </label>
-          <input
-            id="fecha"
-            type="date"
-            value={fecha}
-            onChange={(e) => setFecha(e.target.value)}
-            required
-            className="input"
-          />
-        </div>
-
-        {/* Botón */}
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="w-full bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      {showQR && password && fecha && (
+        <div 
+          className="fixed inset-0 w-full h-full backdrop-blur-lg flex items-center justify-center z-50 animate-fadeIn"
+          style={{ backgroundColor: 'rgba(231, 74, 74, 0.33)' }}
+          onClick={onCloseQR}
+        >
+          <div 
+            className="relative bg-white rounded-xl shadow-2xl p-10 max-w-md w-full animate-scaleIn"
+            onClick={(e) => e.stopPropagation()}
           >
-            Generar Código QR
-          </button>
+            <QRCodeGenerator password={password} fecha={fecha} />
+          </div>
         </div>
-      </form>
-    </div>
+      )}
+    </>
   );
 };
 

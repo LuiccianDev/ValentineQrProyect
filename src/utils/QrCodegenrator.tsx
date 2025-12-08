@@ -1,5 +1,4 @@
-// src/components/QRCodeGenerator/QRCodeGenerator.tsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import QRCode from "qrcode";
 import { MENSAJE, USERNAME } from "../const/constants.ts";
 
@@ -12,37 +11,78 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ password, fecha }) =>
   const [qrUrl, setQrUrl] = useState<string>("");
 
   useEffect(() => {
-    let isMounted = true; // Evita errores si el componente se desmonta
+    let isMounted = true;
 
-    const generarQRCode = async (): Promise<void> => {
+    const generarQRCode = async () => {
       if (!password || !fecha) return;
 
       const enlace = `https://instagram.com/${encodeURIComponent(USERNAME)}`;
       const contenidoQR = `${MENSAJE} | Enlace : ${enlace}`;
 
-      try {
-        const urlGenerada = await QRCode.toDataURL(contenidoQR, { width: 300 });
-        if (isMounted) setQrUrl(urlGenerada);
-      } catch (error) {
-        console.error("Error al generar el código QR:", error);
+      // 1. Generar QR normal en canvas
+      const canvas = document.createElement("canvas");
+
+      await QRCode.toCanvas(canvas, contenidoQR, {
+        width: 500,
+        margin: 2,
+        color: {
+          dark: "#000000", // Se sobrescribirá luego
+          light: "#00000000",
+        },
+      });
+
+      // 2. Crear degradado
+      const ctx = canvas.getContext("2d")!;
+      const gradient = ctx.createLinearGradient(0, 0, 500, 500);
+
+      gradient.addColorStop(0, "#ff8484ff");
+      gradient.addColorStop(1, "#ac2525ff");
+
+      // 3. Reemplazar color negro por el degradado
+      const imageData = ctx.getImageData(0, 0, 500, 500);
+      const data = imageData.data;
+
+      for (let i = 0; i < data.length; i += 4) {
+        const [r, g, b] = [data[i], data[i + 1], data[i + 2]];
+
+        // detectar "píxeles negros" del QR
+        if (r < 50 && g < 50 && b < 50) {
+          const x = (i / 4) % 500;
+          const y = Math.floor(i / 4 / 500);
+          const grad = ctx.createLinearGradient(0, 0, 500, 500);
+          grad.addColorStop(0, "#a83c53ff");
+          grad.addColorStop(1, "#881428ff");
+
+          const pixel = ctx.getImageData(x, y, 1, 1);
+          // dejar que el gradiente pinte el pixel actual
+          data[i] = 255; // provisional, se sobrescribe luego
+        }
       }
+
+      // Aplicar degradado sobre los módulos negros
+      ctx.globalCompositeOperation = "source-in";
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 500, 500);
+
+      const dataUrl = canvas.toDataURL("image/png");
+
+      if (isMounted) setQrUrl(dataUrl);
     };
 
     generarQRCode();
-
     return () => {
-      isMounted = false; // Limpieza del efecto
+      isMounted = false;
     };
   }, [password, fecha]);
 
   if (!qrUrl) return null;
 
   return (
-    <div className="flex justify-center items-center p-4">
+    <div className="flex justify-center items-center">
       <img
         src={qrUrl}
         alt="Código QR"
-        className="border-4 border-white rounded-lg shadow-lg"
+        className="rounded-xl border-4 border-white "
       />
     </div>
   );
