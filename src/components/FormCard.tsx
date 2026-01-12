@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ValentineHeart from './Textparticle.tsx'
 
 interface FormCardProps {
   onSubmit: (password: string, secretKey: string) => void
@@ -17,19 +18,20 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
   }
 
   return (
-    <div className="relative z-10 flex min-h-[70vh] w-full max-w-lg flex-col justify-center">
-      <div className="mb-8 text-center">
-        <h1 className="mb-3 text-7xl font-bold text-red-600">Valentine QR</h1>
-        <p className="text-sm font-bold text-gray-700">
-          Crea un QR especial para tu propuesta de San Valentín.
-        </p>
+    <div className="relative z-10 flex w-full max-w-lg flex-col justify-center">
+      <div className="text-center">
+        {/* <h1 className="mb-3 text-7xl font-bold text-red-500">Valentine QR</h1> */}
+        <ValentineHeart />
       </div>
 
-      <div className="rounded-3xl bg-red-200/50 px-8 py-10 shadow-2xl backdrop-blur-md">
-        <form onSubmit={handleSubmit}>
+      <div className="font- mx-8">
+        <form
+          onSubmit={handleSubmit}
+          className="rounded-4xl border border-white/60 bg-white/40 p-10 shadow-[0_25px_50px_-12px_rgba(255,182,193,0.5)] backdrop-blur-xl"
+        >
           <div className="mb-6">
             <label htmlFor="password" className="mb-3 block text-base font-bold text-red-700">
-              Contraseña
+              Password
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-red-700">
@@ -42,7 +44,7 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Introduce una contraseña segura."
+                placeholder="Enter a secure password."
                 required
                 className="w-full rounded-2xl border-2 border-red-300 bg-red-50 py-3 pr-12 pl-12 text-sm text-gray-800 placeholder-gray-500 shadow-sm focus:border-red-500 focus:ring-2 focus:ring-red-500 focus:outline-none"
               />
@@ -63,7 +65,7 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
             </div>
           </div>
 
-          <div className="my-6 flex items-center justify-center text-red-800">
+          <div className="my-5 flex items-center justify-center text-red-500">
             <span className="h-px grow bg-red-600"></span>
             <svg
               className="mx-2 h-6 w-12"
@@ -85,9 +87,9 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
             <span className="h-px grow bg-red-600"></span>
           </div>
 
-          <div className="mb-6">
+          <div className="mb-10">
             <label htmlFor="secretKey" className="mb-3 block text-base font-bold text-red-700">
-              Clave Secreta
+              Secret Key
             </label>
             <div className="relative">
               <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-red-700">
@@ -100,7 +102,7 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
                 type="text"
                 value={secretKey}
                 onChange={(e) => setSecretKey(e.target.value)}
-                placeholder="Escribe la clave secreta"
+                placeholder="Enter the secret key"
                 required
                 className="w-full rounded-2xl border-2 border-red-300 bg-red-50 py-3 pr-4 pl-12 text-sm text-gray-800 placeholder-gray-500 shadow-sm focus:border-red-500 focus:ring-2 focus:ring-red-500 focus:outline-none"
               />
@@ -109,26 +111,26 @@ const FormCard: React.FC<FormCardProps> = ({ onSubmit }) => {
 
           <button
             type="submit"
-            className="relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-linear-to-r from-red-600 to-red-600 px-6 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+            className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-linear-to-r from-red-500 via-red-500/80 to-red-500 px-8 py-5 text-lg font-black text-white shadow-[0_10px_20px_rgba(220,38,38,0.3)] transition-all hover:scale-[1.01] active:scale-95"
           >
+            <div className="absolute inset-0 h-full w-full -translate-x-full bg-white/20 transition-transform duration-700 ease-in-out group-hover:translate-x-full"></div>
             <svg
-              width="20"
-              height="20"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="relative z-10"
+              className="animate-bounce"
             >
               <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13-2h-2v3h-3v2h3v3h2v-3h3v-2h-3v-3z" />
             </svg>
-            <span className="relative z-10">Generar Código QR</span>
+            <span>GENERARATE QR </span>
           </button>
         </form>
       </div>
 
-      <p className="mt-5 text-center text-base font-bold text-gray-800">
-        Este código QR desbloqueará tu propuesta romántica.
+      <p className="mt-5 text-center text-base font-bold text-red-500">
+        This QR code will unlock your romantic proposal.
       </p>
-      <div className="pointer-events-none absolute -bottom-20 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-rose-200 opacity-40 blur-3xl"></div>
     </div>
   )
 }

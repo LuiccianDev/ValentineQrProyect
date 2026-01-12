@@ -29,15 +29,15 @@ const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className="fixed right-0 bottom-0 left-0 z-10 border-t border-red-200/40 bg-white/20 shadow-lg backdrop-blur-md">
+    <footer className="fixed right-0 bottom-0 left-0 z-10 border-t border-red-200/40 bg-white/10 shadow-lg backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-6 py-2">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="text-center md:text-left">
-            <p className="text-sm font-bold text-pink-700 drop-shadow-sm">
-              Creado con
+            <p className="text-sm  text-red-500 drop-shadow-sm">
+              Made with
               <span className="animate-pulse text-red-500">❤️</span>
-              por
-              <span className="font-extrabold text-red-600">LuiccianDev</span>
+              by 
+              <span className="font-extrabold text-red-600"> LuiccianDev</span>
             </p>
           </div>
 
@@ -48,10 +48,10 @@ const Footer: React.FC = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transform text-pink-700 drop-shadow-md transition-all duration-300 hover:scale-125 hover:text-red-600"
+                className="transform text-red-500 drop-shadow-md transition-all duration-300 hover:scale-125 hover:text-red-600"
                 aria-label={link.ariaLabel}
               >
-                <svg className="size-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   {link.icon}
                 </svg>
               </a>

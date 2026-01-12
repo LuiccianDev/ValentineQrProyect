@@ -3,7 +3,7 @@ import FormCard from '../components/FormCard'
 import QRCodeGenerator from '../components/QrCodegenrator'
 import Alert from '../components/Alert'
 import Footer from '../components/Footer'
-import Header from '../components/Header'
+import ValentineBackground from '../components/Background'
 
 interface CredentialsFormProps {
   onSubmit: (password: string, secretKey: string) => void
@@ -28,24 +28,20 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
 }) => {
   return (
     <>
-      <Header />
-      <div className="fixed inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-red-100 p-4">
-        <div className="relative z-10">
-          <FormCard onSubmit={onSubmit} attempts={attempts} errorMessage={errorMessage} />
-        </div>
-        <Alert
-          message={errorMessage}
-          show={!!errorMessage && attempts < 3}
-          onClose={onCloseAlert}
-          duration={5000}
-        />
-        <Footer />
-      </div>
+      <ValentineBackground />
+      <FormCard onSubmit={onSubmit} attempts={attempts} errorMessage={errorMessage} />
+      <Alert
+        message={errorMessage}
+        show={!!errorMessage && attempts < 3}
+        onClose={onCloseAlert}
+        duration={5000}
+      />
+      <Footer />
 
       {showQR && password && secretKey && (
         <div
           className="animate-fadeIn fixed inset-0 z-50 flex h-full w-full items-center justify-center backdrop-blur-lg"
-          style={{ backgroundColor: 'rgba(231, 74, 74, 0.33)' }}
+          style={{ backgroundColor: 'rgba(231, 74, 74, 0.10)' }}
           onClick={onCloseQR}
         >
           <div
@@ -54,7 +50,7 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
           >
             <QRCodeGenerator password={password} secretKey={secretKey} />
             <p className="mt-6 text-center text-base font-semibold text-red-600">
-              Último intento fallido. Aquí está tu código QR de todas formas...
+              Last failed attempt. Here is your QR code anyway...
             </p>
           </div>
         </div>

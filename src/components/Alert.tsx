@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 interface AlertProps {
   message: string
@@ -7,7 +7,7 @@ interface AlertProps {
   duration?: number
 }
 
-const Alert: React.FC<AlertProps> = ({ message, show, onClose, duration = 5000 }) => {
+export default  function Alert({ message, show, onClose, duration = 5000 }: AlertProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [isExiting, setIsExiting] = useState(false)
 
@@ -42,12 +42,12 @@ const Alert: React.FC<AlertProps> = ({ message, show, onClose, duration = 5000 }
     >
       <div className="rounded-2xl border-2 border-red-400 bg-white p-4 shadow-2xl">
         <div className="flex items-start gap-3">
-          <img src="/brokeHeart.png" alt="Corazón roto" className="mt-0.5 h-8 w-8 shrink-0" />
+          <img src="/brokeHeart.png" alt="Broken heart" className="mt-0.5 h-8 w-8 shrink-0" />
           <p className="flex-1 text-sm font-semibold text-red-700">{message}</p>
           <button
             onClick={handleClose}
             className="shrink-0 text-gray-500 transition-colors duration-200 hover:text-red-600"
-            aria-label="Cerrar"
+            aria-label="Close"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -64,4 +64,3 @@ const Alert: React.FC<AlertProps> = ({ message, show, onClose, duration = 5000 }
   )
 }
 
-export default Alert
