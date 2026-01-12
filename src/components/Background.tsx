@@ -26,11 +26,16 @@ export default function ValentineBackground() {
       delay: Math.random() * 5, // Retraso inicial
       opacity: Math.random() * (0.8 - 0.3) + 0.4, // Opacidad variable
     }))
-    setHearts(newHearts)
+
+    const timer = setTimeout(() => {
+      setHearts(newHearts)
+    }, 0)
+
+    return () => clearTimeout(timer)
   }, [])
 
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden bg-linear-to-br from-pink-100 via-red-50 to-pink-200 bg-[url('/bg.webp')] bg-cover bg-fixed bg-no-repeat ">
+    <div className="fixed inset-0 z-[-1] overflow-hidden bg-linear-to-br bg-[url('/bg.webp')] from-pink-100 via-red-50 to-pink-200 bg-cover bg-fixed bg-no-repeat">
       {/* Capa de brillo suave */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white/30 via-transparent to-transparent" />
 

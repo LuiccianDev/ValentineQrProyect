@@ -1,4 +1,3 @@
-
 const romanticPhrases = [
   'Love is the poetry of the senses ❤️',
   'With you, every moment is special 💕',
@@ -14,29 +13,27 @@ const romanticPhrases = [
 
 export default function CarruselFrases() {
   return (
-    <div className=" overflow-hidden ">
-        <div className="animate-scroll flex whitespace-nowrap">
-          {/* Primera copia de las frases */}
-          {romanticPhrases.map((phrase, index) => (
-            <span
-              key={`phrase-1-${index}`}
-              className="inline-block px-8 text-3xl font-semibold text-red-600 italic md:text-base"
-            >
-              {phrase}
-            </span>
-          ))}
-          {/* Segunda copia para loop infinito */}
-          {romanticPhrases.map((phrase, index) => (
-            <span
-              key={`phrase-2-${index}`}
-              className="inline-block px-8 text-3xl font-semibold text-red-600 italic md:text-base"
-            >
-              {phrase}
-            </span>
-          ))}
-        </div>
+    <div className="overflow-hidden">
+      <div className="animate-scroll flex whitespace-nowrap">
+        {/* Primera copia de las frases */}
+        {romanticPhrases.map((phrase, index) => (
+          <span
+            key={`phrase-1-${index}`}
+            className="inline-block px-8 text-3xl font-semibold text-red-600 italic md:text-base"
+          >
+            {phrase}
+          </span>
+        ))}
+        {/* Segunda copia para loop infinito */}
+        {romanticPhrases.map((phrase, index) => (
+          <span
+            key={`phrase-2-${index}`}
+            className="inline-block px-8 text-3xl font-semibold text-red-600 italic md:text-base"
+          >
+            {phrase}
+          </span>
+        ))}
+      </div>
     </div>
   )
 }
-
-

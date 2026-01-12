@@ -33,10 +33,10 @@ const Footer: React.FC = () => {
       <div className="mx-auto max-w-7xl px-6 py-2">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="text-center md:text-left">
-            <p className="text-sm  text-red-500 drop-shadow-sm">
+            <p className="text-sm text-red-500 drop-shadow-sm">
               Made with
               <span className="animate-pulse text-red-500">❤️</span>
-              by 
+              by
               <span className="font-extrabold text-red-600"> LuiccianDev</span>
             </p>
           </div>
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
                 className="transform text-red-500 drop-shadow-md transition-all duration-300 hover:scale-125 hover:text-red-600"
                 aria-label={link.ariaLabel}
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                   {link.icon}
                 </svg>
               </a>

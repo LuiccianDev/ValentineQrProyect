@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 interface AlertProps {
   message: string
@@ -7,30 +7,35 @@ interface AlertProps {
   duration?: number
 }
 
-export default  function Alert({ message, show, onClose, duration = 5000 }: AlertProps) {
+export default function Alert({ message, show, onClose, duration = 5000 }: AlertProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [isExiting, setIsExiting] = useState(false)
 
-  useEffect(() => {
-    if (show) {
-      setIsVisible(true)
-      setIsExiting(false)
-
-      const timer = setTimeout(() => {
-        handleClose()
-      }, duration)
-
-      return () => clearTimeout(timer)
-    }
-  }, [show, duration])
-
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsExiting(true)
     setTimeout(() => {
       setIsVisible(false)
       if (onClose) onClose()
     }, 300)
-  }
+  }, [onClose])
+
+  useEffect(() => {
+    if (show) {
+      const showTimer = setTimeout(() => {
+        setIsVisible(true)
+        setIsExiting(false)
+      }, 0)
+
+      const timer = setTimeout(() => {
+        handleClose()
+      }, duration)
+
+      return () => {
+        clearTimeout(showTimer)
+        clearTimeout(timer)
+      }
+    }
+  }, [show, duration, handleClose])
 
   if (!isVisible) return null
 
@@ -63,4 +68,3 @@ export default  function Alert({ message, show, onClose, duration = 5000 }: Aler
     </div>
   )
 }
-
